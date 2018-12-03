@@ -1,6 +1,7 @@
 package com.company.project.configurer;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.parser.Feature;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
@@ -51,8 +52,11 @@ public class WebConfigurer implements WebMvcConfigurer {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
         FastJsonConfig config = new FastJsonConfig();
+        // JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+        config.setDateFormat("yyyy-MM-dd HH:mm:ss");
         //保留空的字段
         config.setSerializerFeatures(SerializerFeature.WriteMapNullValue);
+        config.setSerializerFeatures(SerializerFeature.PrettyFormat);
         //SerializerFeature.WriteNullStringAsEmpty,//String null -> ""
         //SerializerFeature.WriteNullNumberAsZero//Number null -> 0
         // 按需配置，更多参考FastJson文档哈
@@ -60,7 +64,7 @@ public class WebConfigurer implements WebMvcConfigurer {
         converter.setFastJsonConfig(config);
         converter.setDefaultCharset(Charset.forName("UTF-8"));
         converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON_UTF8));
-        converters.add(converter);
+        converters.add(0, converter);
     }
 
 

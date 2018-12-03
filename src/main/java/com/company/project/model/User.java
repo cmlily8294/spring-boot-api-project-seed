@@ -3,10 +3,12 @@ package com.company.project.model;
 import java.util.Date;
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Table(name = "public.user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select nextval('public.user_id_seq);")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select nextval('public.user_id_seq');")
     private Integer id;
 
     private String username;
@@ -19,6 +21,7 @@ public class User {
     private Integer sex;
 
     @Column(name = "register_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date registerDate;
 
     /**

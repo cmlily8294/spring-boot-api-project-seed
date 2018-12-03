@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Table(name = "public.student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select nextval('public.student_id_seq);")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select nextval('public.student_id_seq');")
     private Integer id;
 
     private String name;

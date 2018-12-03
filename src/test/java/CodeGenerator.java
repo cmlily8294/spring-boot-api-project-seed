@@ -115,7 +115,7 @@ public class CodeGenerator {
         tableConfiguration.setSchema("public");
         if (StringUtils.isNotEmpty(modelName))tableConfiguration.setDomainObjectName(modelName);
         // tableConfiguration.setGeneratedKey(new GeneratedKey("id", "Mysql", true, null));
-        tableConfiguration.setGeneratedKey(new GeneratedKey("id", "select nextval(''"+SEQ_NAME+"');", false, null));
+        tableConfiguration.setGeneratedKey(new GeneratedKey("id", "select nextval('"+SEQ_NAME+"');", false, null));
         context.addTableConfiguration(tableConfiguration);
 
         List<String> warnings;

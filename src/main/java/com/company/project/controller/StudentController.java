@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by caolong on 2018/12/03.
+* Created by caolong on 2018/12/04.
 */
 @RestController
 @RequestMapping("/student")
