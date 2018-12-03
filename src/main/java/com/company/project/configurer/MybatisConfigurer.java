@@ -66,9 +66,10 @@ public class MybatisConfigurer {
         //insert、update是否判断字符串类型!='' 即 test="str != null"表达式内是否追加 and str != ''
         properties.setProperty("notEmpty", "false");
         //取回主键的方式
-        properties.setProperty("IDENTITY", "MYSQL");
+        // properties.setProperty("IDENTITY", "MYSQL");
         //配置后会自动处理关键字，可以配的值和数据库有关。
-        properties.setProperty("wrapKeyword", "`{0}`");
+        // properties.setProperty("wrapKeyword", "`{0}`");
+        properties.setProperty("ORDER", "BEFORE");
         mapperScannerConfigurer.setProperties(properties);
 
         return mapperScannerConfigurer;

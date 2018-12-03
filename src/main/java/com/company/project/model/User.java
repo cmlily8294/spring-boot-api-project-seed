@@ -3,9 +3,10 @@ package com.company.project.model;
 import java.util.Date;
 import javax.persistence.*;
 
+@Table(name = "public.user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "select nextval('public.user_id_seq);")
     private Integer id;
 
     private String username;

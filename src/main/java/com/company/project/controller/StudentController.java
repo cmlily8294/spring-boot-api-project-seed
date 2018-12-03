@@ -1,8 +1,8 @@
 package com.company.project.controller;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
-import com.company.project.model.User;
-import com.company.project.service.UserService;
+import com.company.project.model.Student;
+import com.company.project.service.StudentService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,39 +17,39 @@ import java.util.List;
 * Created by caolong on 2018/12/03.
 */
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/student")
+public class StudentController {
     @Resource
-    private UserService userService;
+    private StudentService studentService;
 
     @PostMapping("/add")
-    public Result add(User user) {
-        userService.save(user);
+    public Result add(Student student) {
+        studentService.save(student);
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/delete")
     public Result delete(@RequestParam Integer id) {
-        userService.deleteById(id);
+        studentService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/update")
-    public Result update(User user) {
-        userService.update(user);
+    public Result update(Student student) {
+        studentService.update(student);
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/detail")
     public Result detail(@RequestParam Integer id) {
-        User user = userService.findById(id);
-        return ResultGenerator.genSuccessResult(user);
+        Student student = studentService.findById(id);
+        return ResultGenerator.genSuccessResult(student);
     }
 
     @PostMapping("/list")
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
-        List<User> list = userService.findAll();
+        List<Student> list = studentService.findAll();
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
     }
